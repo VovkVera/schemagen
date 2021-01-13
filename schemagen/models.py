@@ -76,4 +76,4 @@ class Field(models.Model):
             "kind": self.kind,
         }
 
-    def __str__(self): return f" field: {self.name} | type: {self.kind} "
+    def __str__(self): return f" field: {self.name} | type: {self.kind}, schema: {self.schema} "

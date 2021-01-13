@@ -61,30 +61,9 @@ def submit_schema(request):
     # Composing a new post must be via POST
     if request.method != "POST":
         return JsonResponse({"error": "POST request required."}, status=400)
-    data = json.loads(request.body)
-
 
     # Метод получает данные схемы и полей одним json объектом:
-    data = {
-        'name': 'example-scheme',
-        'fields': [
-            {
-                'name': 'field1',
-                'order': 1,
-                'kind': 'FULL_NAME',
-            },
-            {
-                'name': 'field2',
-                'order': 2,
-                'kind': 'Job',
-            },
-            {
-                'name': 'field2',
-                'order': 3,
-                'kind': 'Sity',
-            },
-        ],
-    }
+    data = json.loads(request.body)
 
     # Тут мы создаем схему:
     schema = Schema.objects.create(name=data['name'], user=request.user)

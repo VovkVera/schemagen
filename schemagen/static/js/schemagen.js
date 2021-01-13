@@ -5,12 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
 document.querySelector('#btn_add_field_schema').addEventListener('click', add_field);
 document.querySelector('#btn_submit_schema').addEventListener('click', submit_schema);
 
-
 var btns_gen_data = document.querySelectorAll('.btn_data_gen_');
 for(i=0;i<btns_gen_data.length; i++){
          btns_gen_data[i].addEventListener('click', pre_generator_data);
          }
 });
+
+//schema_fields_js
 
 function pre_generator_data() {
     var schema_id = this.id
@@ -70,15 +71,17 @@ function generation_data(schema_id) {
         });
 }
 
+var fields = []
+
 function submit_schema() {
     var name = document.querySelector('#schema_name').value;
-    console.log(name)
 
     fetch('/submit_schema', {
           credentials: 'include',
           method: 'POST',
           body: JSON.stringify({
-              name: name
+              name: name,
+              fields: fields
           })
         })
         .then(response => response.json())
@@ -92,28 +95,21 @@ function add_field() {
     var kind =  document.querySelector('#colum_type_new').value;
     var order =  document.querySelector('#colum_order_new').value;
 
-    fetch('/add_custom_field', {
-          credentials: 'include',
-          method: 'POST',
-          body: JSON.stringify({
-              name: name,
-              order:order,
-              kind:kind
-          })
-        })
-        .then(response => response.json())
-        .then(result => {
-            // Print result
-            document.querySelector('#colum_name_new').value = '';
-            document.querySelector('#colum_order_new').value = '';
-            visualisation_add_column(result.data);
-        });
-
+    var data = {
+        name: name,
+        order:order,
+        kind:kind
+    }
+    fields.push(data)
+    console.log(fields)
+    document.querySelector('#colum_name_new').value = '';
+    document.querySelector('#colum_order_new').value = '';
+    visualisation_add_column(data);
 
 }
 
 function visualisation_add_column(column){
-console.log(column)
+
     rows = document.querySelector('#custom_colums')
         var field = document.createElement('div');
         field.className = 'form-row';
