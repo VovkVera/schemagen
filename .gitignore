@@ -109,6 +109,8 @@ venv.bak/
 .idea/
 
 schemagen/__pycache__/
+planteks/__pycache__/
+schemagen/migrations/__pycache__/
 
 # VScode
 .vscode

@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>For Planteks - Shemas generator</title>
+        <title>For customers - Shemas generator</title>
         <link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.ico' %}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">for Planteks</a>
+                <a class="navbar-brand js-scroll-trigger" href="#page-top">Vera Vovk</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -54,7 +54,7 @@
         <header class="masthead">
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">Shemagen</h1>
+                    <h1 class="mx-auto my-0 text-uppercase">Schemagen</h1>
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">
                         Any logged-in user can create any number of data schemas to create datasets with fake data</h2>
 
@@ -79,7 +79,7 @@
                         </div>
 
         </section>
-        <!-- About-->
+        <!-- List of schemas -->
         {% if user.is_authenticated %}
         <section class="about-section text-center" id="about">
             <div class="container">
@@ -94,14 +94,13 @@
                         | <a id="{{ schema.id }}" class="btn_data_gen_">Generate data</a>
                         </div>
                          {% endfor %}
-
                     </div>
                 </div>
                 <img class="img-fluid" src="{% static 'assets/img/ipad.png' %}" alt="" />
             </div>
         </section>
 
-        <!-- Projects-->
+        <!-- Creating of  user's schema -->
         <section class="projects-section bg-light" id="create_schema">
             <div class="container">
                 <!-- Featured Project Row-->

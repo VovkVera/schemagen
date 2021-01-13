@@ -43,7 +43,7 @@ function pre_generator_data() {
 
 function generation_data(schema_id) {
     count_rows = document.querySelector('#count_input_'+schema_id).value;
-    table_name =document.querySelector('#name_input'+schema_id).value;
+    table_name = document.querySelector('#name_input'+schema_id).value;
 
     fetch('/generation_data', {
           credentials: 'include',
@@ -62,7 +62,7 @@ function generation_data(schema_id) {
             btn.setAttribute('type', 'submit');
             btn.className = "btn btn-outline-primary";
             btn.innerText = 'Upload';
-            
+
         div.append(btn)
         //var btn_download = '<input type="file" name="myfile">   <button type="submit">Upload</button>'
 
