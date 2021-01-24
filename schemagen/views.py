@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.db import IntegrityError
-
+from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
@@ -19,9 +19,10 @@ def index(request):
 
     user = request.user
     schemas = Schema.objects.filter(user=user)
+
     return render(request, "schemagen/index.html", {
             "type_list": fields_types.type_list,
-            "schemas": schemas
+            "schemas": schemas,
         })
 
 
