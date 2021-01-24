@@ -70,32 +70,37 @@ function generation_data(schema_id) {
         });
 }
 
-var fields = []
+
 
 
 function element_parsing(element) {
-     //input_order
-     let  field_name = element.querySelector('#input_name').value;
-     console.log(field_name);
-     let  field_type = element.querySelector('#inputType').value;
-     console.log(field_type);
-     let  field_order = element.querySelector('#input_order').value;
-     console.log(field_order);
+
+    var name = element.querySelector('#input_name').value;
+    var kind =  element.querySelector('#inputType').value;
+    var order =  element.querySelector('#input_order').value;
+
+    var data = {
+        name: name,
+        order:order,
+        kind:kind
+    }
+
+    return data;
 
 }
 
 function submit_schema() {
     var name = document.querySelector('#schema_name').value;
 
-    var fields_ = []
+    var fields = []
 
     let rows = document.querySelector('#custom_colums')
     var elementList = rows.querySelectorAll(".form-row");
     console.log(rows)
     elementList.forEach(element =>
-     element_parsing(element)
+        fields.push(element_parsing(element))
      );
-
+    console.log(fields)
     fetch('/submit_schema', {
           credentials: 'include',
           method: 'POST',
@@ -111,6 +116,7 @@ function submit_schema() {
 }
 
 function add_field() {
+
     var name = document.querySelector('#colum_name_new').value;
     var kind =  document.querySelector('#colum_type_new').value;
     var order =  document.querySelector('#colum_order_new').value;
@@ -120,8 +126,7 @@ function add_field() {
         order:order,
         kind:kind
     }
-    fields.push(data)
-    console.log(fields)
+
     document.querySelector('#colum_name_new').value = '';
     document.querySelector('#colum_order_new').value = '';
     visualisation_add_column(data);
