@@ -126,14 +126,15 @@
                                     <a class="btn btn-outline-primary js-scroll-trigger" id="btn_submit_schema">Submit</a>
                                     </div>
                                   </div>
+                            <div  id="custom_colums">
                                  <div class="form-row">
                                     <div class="form-group col-md-6">
-                                      <label for="colum_name_name" class="text-black-50 mb-0">Column name</label>
-                                      <input type="text" class="form-control" id="colum_name_name" value="Name">
+                                      <label for="input_name" class="text-black-50 mb-0">Column name</label>
+                                      <input type="text" class="form-control" id="input_name" value="Name">
                                     </div>
                                     <div class="form-group col-md-2">
-                                      <label for="inputState" class="text-black-50 mb-0">Type</label>
-                                      <select id="inputState" class="form-control">
+                                      <label for="inputType" class="text-black-50 mb-0">Type</label>
+                                      <select id="inputType" class="form-control">
                                           {% for type in type_list %}
                                           {% if type == "String" %}
                                              <option  selected="selected">{{ type }}</option>
@@ -145,8 +146,8 @@
                                     </div>
 
                                     <div class="form-group col-md-2">
-                                      <label for="inputState1"  class="text-black-50 mb-0">Order</label>
-                                      <input type="text" class="form-control" id="inputState1" value="1">
+                                      <label for="input_order"  class="text-black-50 mb-0">Order</label>
+                                      <input type="text" class="form-control" id="input_order" value="1">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="btn_delete_schema"  class="text-black-50 mb-0"></label>
@@ -156,12 +157,12 @@
 
                                  <div class="form-row">
                                     <div class="form-group col-md-6">
-                                      <label for="column_name_age"  class="text-black-50 mb-0">Column name</label>
-                                      <input type="text" class="form-control" id="column_name_age" value="Age">
+                                      <label for="input_name"  class="text-black-50 mb-0">Column name</label>
+                                      <input type="text" class="form-control" id="input_name" value="Age">
                                     </div>
                                     <div class="form-group col-md-2">
-                                      <label for="inputState_"  class="text-black-50 mb-0">Type</label>
-                                      <select id="inputState_" class="form-control">
+                                      <label for="inputType"  class="text-black-50 mb-0">Type</label>
+                                      <select id="inputType" class="form-control">
                                         {% for type in type_list %}
                                           {% if type.name == "Integer" %}
                                              <option  selected="selected">{{ type }}</option>
@@ -173,18 +174,16 @@
                                     </div>
 
                                     <div class="form-group col-md-2">
-                                      <label for="inputState1_"  class="text-black-50 mb-0">Order</label>
-                                      <input type="text" class="form-control" id="inputState1_" value="2">
+                                      <label for="input_order"  class="text-black-50 mb-0">Order</label>
+                                      <input type="text" class="form-control" id="input_order" value="2">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="btn_delete_schema_"  class="text-black-50 mb-0"></label>
                                     <a class="btn btn-outline-primary js-scroll-trigger" id="btn_delete_schema_" href="#">delete</a>
                                     </div>
                                   </div>
+                            </div>
 
-                                  <div id="custom_colums">
-
-                                  </div>
                                 <hr>
 
                                  <div class="form-row">
