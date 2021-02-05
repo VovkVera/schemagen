@@ -5,12 +5,12 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.db import IntegrityError
-from django.forms import modelformset_factory
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import User, Field, Schema
 from . import fields_types
+
 
 
 def index(request):
@@ -84,9 +84,24 @@ def submit_schema(request):
                          "data": schema.serialize()}, status=201)
 
 
+
 @csrf_exempt
 @login_required
-def add_custom_field(request):
+def submit_schema_steply(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "POST request required."}, status=400)
+
+    data = json.loads(request.body)
+    schema = Schema.objects.create(name=data['name'], user=request.user)
+    schema.save()
+
+    return JsonResponse({"message": "Post posted successfully.",
+                         "data": schema.serialize()}, status=201)
+
+
+@csrf_exempt
+@login_required
+def add_custom_field(request, schema_id):
     if request.method != "POST":
         return JsonResponse({"error": "POST request required."}, status=400)
     data = json.loads(request.body)
@@ -95,7 +110,9 @@ def add_custom_field(request):
     kind = data["kind"]
     order = data["order"]
 
-    field = Field.objects.create(name=name, kind=kind, order=order)
+    schema = Schema.objects.get(id=schema_id)
+
+    field = Field.objects.create(name=name, kind=kind, order=order, schema=schema)
     field.save()
     return JsonResponse({"message": "Post posted successfully.",
                          "data": field.serialize()}, status=201)
